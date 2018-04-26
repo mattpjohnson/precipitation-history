@@ -1,0 +1,25 @@
+{
+  "name": "precipitation-history",
+  "version": "1.0.0",
+  "description": "Get precipitation history for an area",
+  "main": "index.js",
+  "dependencies": {
+    "jsdom": "^11.9.0",
+    "moment": "^2.22.1",
+    "node-fetch": "^2.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mattpjohnson/precipitation-history.git"
+  },
+  "author": "Matt Johnson <hello@mattpjohnson.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattpjohnson/precipitation-history/issues"
+  },
+  "homepage": "https://github.com/mattpjohnson/precipitation-history#readme"
+}
