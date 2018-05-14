@@ -1,22 +1,25 @@
-#!/usr/bin/env node
 const fetch = require('node-fetch');
 const { JSDOM } = require('jsdom');
 const moment = require('moment');
 
-async function getPrecipForNumberOfDays({ state, place, endDate, numberOfDays }) {
+async function getPrecipForNumberOfDays({ state, place, endDate, numberOfDays, callback }) {
 	const dateDifference = numberOfDays - 1;
 	const startDate = moment(endDate)
 		.subtract(dateDifference, 'days')
 		.format('YYYY-MM-DD');
-	return getPrecipForDateRange({ state, place, startDate, endDate });
+	return getPrecipForDateRange({ state, place, startDate, endDate, callback });
 }
 
-async function getPrecipForDateRange({ state, place, startDate, endDate }) {
+async function getPrecipForDateRange({ state, place, startDate, endDate, callback }) {
 	const data = {};
 
 	for (const date of getDatesInRange({ startDate, endDate })) {
 		const precip = await getPrecipForDate({ state, place, date });
 		data[date] = precip;
+
+		if (callback) {
+			callback({ date, precip });
+		}
 	}
 
 	return data;
@@ -50,10 +53,4 @@ async function getPrecipForDate({ state, place, date }) {
 	return precipSpan.innerHTML;
 }
 
-async function main() {
-	const data = await getPrecipForNumberOfDays({ state: 'GA', place: 'Rome', endDate: '2018-04-25', numberOfDays: 7 });
-	console.log(data);
-	console.log('Total', Object.values(data).reduce((a, b) => Number(a) + Number(b), 0));
-}
-
-main();
+module.exports = { getPrecipForDate, getPrecipForNumberOfDays };

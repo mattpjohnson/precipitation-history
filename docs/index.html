@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Precipitation history</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/loadingio/loading-bar/master/dist/loading-bar.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/utilities.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mx-auto">
+        <form id="entryForm" class="max-w-xs mx-auto mt-4">
+            <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2">
+                Number of days:
+                <input id="numberOfDays" type="number" value="14" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3">
+            </label>
+
+
+            <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="submit">Go</button>
+        </form>
+
+        <div class="ldBar" id="loadingBar"></div>
+
+        <div class="precip-results">
+            <div class="precip-results__total"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.rawgit.com/loadingio/loading-bar/master/dist/loading-bar.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
